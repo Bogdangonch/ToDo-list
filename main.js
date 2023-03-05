@@ -176,7 +176,7 @@ class ToDoList {
     header.className = "header";
     // logo
     const logo = document.createElement("img");
-    logo.src = "./public/logo.svg";
+    logo.src = "/public/logo.svg";
     logo.alt = "logo";
     header.appendChild(logo);
     // input_wrapper
@@ -193,7 +193,7 @@ class ToDoList {
     button.className = "button";
     button.innerText = "Create";
     const plus_img = document.createElement("img");
-    plus_img.src = "./public/plus.svg";
+    plus_img.src = "/public/plus.svg";
     plus_img.alt = "plus";
     button.appendChild(plus_img);
     input_wrapper.appendChild(input);
