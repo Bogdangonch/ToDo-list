@@ -1,0 +1,209 @@
+#app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  transition: grid-template-rows 0.3s linear;
+  @media screen and (min-width: 768px) {
+    grid-template-rows: 200px 1fr;
+  }
+}
+.header {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background-color: $color-gray-700;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.main {
+  display: grid;
+  grid-auto-rows: minmax(100px, 150px);
+  justify-content: center;
+  grid-auto-columns: minmax(auto, calc(638px + 90px + 8px));
+  z-index: 5;
+}
+
+%active {
+  cursor: pointer;
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.input_wrapper {
+  position: absolute;
+  bottom: calc($height-input-wrapper / 2 * -1);
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  padding: 0 10px;
+  .input {
+    padding: 16px;
+    width: 100%;
+    max-width: 638px;
+    background: $color-gray-500;
+    border: none;
+    outline: 1px solid #0d0d0d;
+    border-radius: 8px;
+    color: $color-gray-300;
+    &:focus-visible {
+      outline: 1px solid $color-blue-dark;
+    }
+  }
+  .button {
+    background-color: $color-blue-dark;
+    border-radius: 8px;
+    width: 90px;
+    height: 52px;
+    display: flex;
+    place-items: center;
+    gap: 8px;
+    justify-content: center;
+    border: none;
+    color: $color-gray-100;
+    font-weight: bold;
+    @extend %active;
+    transition: background-color 0.3s linear;
+    &:hover {
+      background-color: $color-blue;
+    }
+  }
+}
+
+.check__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  transition: all 0.3s linear;
+}
+.check__box {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s linear;
+  position: absolute;
+  background-image: url(../img/unchecked.svg);
+  &:hover {
+    background-image: url(../img/unchecked-hover.svg);
+  }
+  background-repeat: no-repeat;
+}
+
+.check__input:checked + .check__box {
+  background-image: url(../img/checked.svg);
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.todo_list {
+  padding-top: 10px;
+  color: #f2f2f2;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  padding: 0 10px;
+  max-width: calc(638px + 90px + 8px);
+  transition: margin-top 0.3s linear;
+  @media screen and (min-width: 768px) {
+    margin-top: 100px;
+  }
+}
+.todo_item {
+  padding: 16px;
+  gap: 12px;
+  width: 100%;
+  min-height: 72px;
+  background: #262626;
+  border: 1px solid #333333;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  font-weight: 400;
+  font-size: 14px;
+  overflow-y: scroll;
+
+  &:hover {
+    background: #262626bb;
+    cursor: pointer;
+  }
+
+  .trash {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    @extend %active;
+    background-image: url("../img/trash.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.3s linear;
+    &:hover {
+      background-color: $color-gray-400;
+      background-image: url("../img/trashhover.svg");
+    }
+  }
+}
+.completed {
+  color: $color-gray-300;
+  text-decoration: line-through $color-purple-dark 1.5px;
+}
+
+// alert
+.alert {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: calc(638px + 90px + 8px);
+  min-height: 50px;
+  //   background-color: $color-danger;
+  border-radius: 0.5rem;
+  position: fixed;
+  bottom: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: bottom 1s linear;
+  padding: 0 10px;
+  z-index: 15;
+}
+
+.active {
+  bottom: 1%;
+}
+.message {
+  color: $color-gray-100;
+  font-weight: 700;
+}
+.statistics_wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  font-weight: 700;
+}
+.header_items {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: $color-gray-200;
+    font-weight: 700;
+    background-color: $color-gray-400;
+    border-radius: 10px;
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+}
+.header_text_todo {
+  color: $color-blue;
+}
+.header_text_completed {
+  color: $color-purple;
+}
